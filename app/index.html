@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <base href="" />
+    <title>Loja Virtual</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Loja virtual..." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="./src/assets/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="./src/pages/home/css/index.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <!-- START HEADER -->
+    <header>
+      <section class="header-main border-bottom bg-dark">
+        <div class="container-fluid">
+          <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+            <div class="col-md-2 text-light company-name">
+              <strong>Loja Virtual</strong>
+            </div>
+            <div class="col-md-8">
+              <div class="d-flex form-search">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="products-search"
+                  placeholder="Pesquisa Loja Virtual..."
+                />
+                <span class="search-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="d-flex d-none d-md-flex flex-row align-items-center">
+                <span class="shop-bag">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-cart"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+                    />
+                  </svg>
+                </span>
+                <div class="d-flex flex-column ms-2">
+                  <span class="qty text-light">0 Produtos</span>
+                  <span class="fw-bold text-light">$27.90</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+    <!-- END HEADER -->
+    <!-- START MAIN -->
+
+    <main>
+      <div class="container products">
+        <select class="form-select" id="products-size">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+
+        <div
+          class="d-flex justify-content-center disable"
+          id="products-spinner"
+        >
+          <div class="spinner-border text-primary" role="status"></div>
+        </div>
+
+        <div id="products-empty" class="alert alert-dark disable" role="alert">
+          Nenhum produto encontrado
+        </div>
+
+        <div
+          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
+          id="products-items"
+        ></div>
+
+        <nav class="pagination-container" id="products-pagination">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" id="previous">
+              <span class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </span>
+            </li>
+
+            <li class="page-item" id="next">
+              <span class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+
+    <!-- END MAIN -->
+
+    <script src="./src/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/services/products.js"></script>
+    <script src="./src/pages/home/products.js"></script>
+  </body>
+</html>

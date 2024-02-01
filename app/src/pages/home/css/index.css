@@ -1,0 +1,93 @@
+.company-name strong {
+  border: 1px solid white;
+  border-radius: 20;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.form-search {
+  position: relative;
+}
+.form-search .form-control {
+  height: 45px;
+}
+
+.form-search .form-control:focus {
+  box-shadow: none;
+  border: 1px solid #000;
+}
+
+.form-search .search-icon {
+  position: absolute;
+  right: 18px;
+  top: 10px;
+}
+
+.shop-bag {
+  background-color: #000;
+  border: 1px solid white;
+  color: #fff;
+  height: 50px;
+  width: 50px;
+  font-size: 25px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty {
+  font-size: 12px;
+}
+
+.products {
+  margin-top: 50px;
+}
+
+.products .card {
+    width: 300px;
+    border: 1px solid black;
+}
+
+.products .form-select {
+    width: 100px !important;
+    margin-bottom: 50px;
+}
+
+.products .sold-off {
+  opacity: 0.3;
+  border: 1px solid red !important;
+}
+
+.products .card-body {
+  padding-top: 0 !important;
+}
+
+.products .products-img-container {
+  text-align: center;
+}
+
+.products .products-img-container img {
+  width: 230px !important;
+  height: 200px !important;
+}
+
+#products-items .col {
+  width: 320px !important;
+}
+
+#products-items .col .btn  {
+  margin-top: 5px;
+}
+
+.pagination-container {
+  margin-top: 50px;
+}
+
+.pagination-container .page-item {
+  cursor: pointer;
+}
+
+.disable {
+  display: none !important;
+}
