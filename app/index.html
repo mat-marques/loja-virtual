@@ -12,6 +12,11 @@
       type="text/css"
     />
     <link
+      href="./src/pages/cart/css/index.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
       href="./src/pages/home/css/index.css"
       rel="stylesheet"
       type="text/css"
@@ -51,7 +56,7 @@
               </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2" id="cart">
               <div class="d-flex d-none d-md-flex flex-row align-items-center">
                 <span class="shop-bag">
                   <svg
@@ -68,8 +73,8 @@
                   </svg>
                 </span>
                 <div class="d-flex flex-column ms-2">
-                  <span class="qty text-light">0 Produtos</span>
-                  <span class="fw-bold text-light">$27.90</span>
+                  <span class="qty text-light" id="quantity">0 Produtos</span>
+                  <span class="fw-bold text-light total">$0</span>
                 </div>
               </div>
             </div>
@@ -78,8 +83,8 @@
       </section>
     </header>
     <!-- END HEADER -->
-    <!-- START MAIN -->
 
+    <!-- START MAIN -->
     <main>
       <div class="container products">
         <select class="form-select" id="products-size">
@@ -122,11 +127,160 @@
         </nav>
       </div>
     </main>
-
     <!-- END MAIN -->
 
+    <!-- START CART -->
+    <div
+      class="modal fade"
+      id="cartModal"
+      tabindex="-1"
+      aria-labelledby="cartModalLabel"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="cartModalLabel">
+              Carrinho de compras
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container rounded cart">
+              <div class="row no-gutters">
+                <div class="col-md-8">
+                  <div
+                    class="product-details mr-2"
+                    id="modal-products-container"
+                  ></div>
+                </div>
+                <div class="col-md-4" id="purchase-infos">
+                  <div class="person-info">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <span>Dados pessoais</span>
+                    </div>
+
+                    <div>
+                      <label class="purchase-label">Nome Completo</label
+                      ><input
+                        type="text"
+                        class="form-control purchase-inputs"
+                        name="name"
+                      />
+                    </div>
+
+                    <div>
+                      <label class="purchase-label">CPF</label
+                      ><input
+                        type="text"
+                        class="form-control purchase-inputs"
+                        minlength="11"
+                        maxlength="11"
+                        name="cpf"
+                      />
+                    </div>
+
+                    <div>
+                      <label class="purchase-label">Email</label
+                      ><input
+                        type="email"
+                        class="form-control purchase-inputs"
+                        name="email"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="payment-info">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <span>Meio de pagamento</span>
+                    </div>
+                    <div class="boleto">
+                      <span>Boleto</span>
+                    </div>
+
+                    <hr class="line" />
+
+                    <div class="d-flex justify-content-between information">
+                      <span>Total</span><span class="total">$0.00</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="confirm-purchase"
+                  >
+                    Finalizar Compra
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="clear-cart">
+              Limpar Carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END CART -->
+
+    <!-- START CART MESSAGE -->
+    <div
+      class="modal fade"
+      id="messageModal"
+      tabindex="-1"
+      aria-labelledby="messageModalLabel"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+    <!-- END CART MESSAGE -->
+
+    <div class="toast" id="cart-notification" style="position: absolute; top: 20px; right: 20px">
+      <div class="toast-header d-flex justify-content-between">
+        <div><strong class="mr-auto">Carrinho</strong></div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+        ></button>
+      </div>
+      <div class="toast-body">Pedido Adicionado com sucesso</div>
+    </div>
+
     <script src="./src/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/storage/cart.js"></script>
+    <script src="./src/pages/cart/cart.js"></script>
     <script src="./src/services/products.js"></script>
+    <script src="./src/services/cart.js"></script>
     <script src="./src/pages/home/products.js"></script>
+    <script src="./src/pages/index.js"></script>
   </body>
 </html>

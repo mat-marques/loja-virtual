@@ -1,4 +1,4 @@
-const Products = function () {
+const Products = function (cart) {
   let pageIndex = 1;
   let pageSize = 10;
   let searchValue = "";
@@ -27,7 +27,7 @@ const Products = function () {
   const handleNextPage = function (e) {
     const button = document.getElementById("next");
     const index = button.getAttribute("data-index");
-    console.log(index);
+
     if (index) {
       setPageIndex(index);
       searchProducts();
@@ -73,6 +73,30 @@ const Products = function () {
     emptyContainer?.classList.add("disable");
   };
 
+  const addProductCart = (e) => {
+    const name = e.target.getAttribute("data-name");
+    const id = e.target.getAttribute("data-id");
+    const image = e.target.getAttribute("data-image");
+    const availableQuantity = e.target.getAttribute("data-available");
+    const price = e.target.getAttribute("data-price");
+    const priceId = e.target.getAttribute("data-price-id");
+    const barCode = e.target.getAttribute("data-bar-code");
+
+    const isAlreadySelected = cart.checkDuplicateProduct(id);
+    if(isAlreadySelected) return;
+    
+    cart.addProduct({
+      id,
+      name,
+      quantity: 1,
+      availableQuantity: parseInt(availableQuantity),
+      price: parseFloat(price),
+      image,
+      priceId,
+      barCode
+    });
+  };
+
   const setProducts = function (products) {
     if (products === null) {
       setEmptyProducts();
@@ -86,8 +110,6 @@ const Products = function () {
       return "";
     }
 
-    console.log(_products);
-
     let elements = "";
     for (let index = 0; index < _products.data.length; index++) {
       const product = _products.data[index];
@@ -100,13 +122,24 @@ const Products = function () {
         availabilityClass = "";
         addCartButton = `
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary" type="button">Adicionar</button>
+          <button class="btn btn-primary add-product-cart" 
+            type="button" 
+            data-name="${product.descricao}" 
+            data-id="${product.id}" 
+            data-image="${product.imagem}" 
+            data-available="${product.quantidade}" 
+            data-price="${product.tipo_preco[0].preco}"
+            data-price-id="${product.tipo_preco[0].preco_id}"
+            data-bar-code="${product.codigo_barras}"
+          >
+            Adicionar
+          </button>
         </div>
-        `
+        `;
       }
 
       elements += `
-        <div class="col">
+        <div class="col" id="list-item-${product.id}">
           <div class="card shadow-sm ${availabilityClass}">
             <div class="products-img-container">
               <img src="${product.imagem}" class="card-img-top" alt="${product.descricao}" />
@@ -114,10 +147,13 @@ const Products = function () {
             <div class="card-body">
               <h5 class="card-title fs-6">${product.descricao}</h5>
               <span class="card-text fs-6">
+                <small class="text-muted">Código de barras: ${product.codigo_barras}</small> </span
+              ><br />
+              <span class="card-text fs-6">
                 <small class="text-muted">${quantity}</small> </span
               ><br />
               <span class="card-text fs-6">
-                <small class="text-muted">R$ ${product.custo_total}</small> </span
+                <small class="text-muted">R$ ${product.tipo_preco[0].preco}</small> </span
               ><br />
               ${addCartButton}
             </div>
@@ -149,7 +185,20 @@ const Products = function () {
     productsItems.innerHTML = setProducts(products);
 
     productsItems?.classList.remove("disable");
+
+    const cartAddButtons = document.querySelectorAll(".add-product-cart");
+
+    for (let item of cartAddButtons) {
+      item.addEventListener("click", addProductCart);
+    }
   };
+
+  const initResetSearchWhenCloseMessageModal = function() {
+    const myModalEl = document.getElementById('messageModal')
+    myModalEl.addEventListener('hidden.bs.modal', event => {
+      searchProducts();
+    }) 
+  }
 
   const initPageSize = function () {
     const searchInput = document.getElementById("products-size");
@@ -177,13 +226,10 @@ const Products = function () {
     initSearchForm();
     searchProducts();
     initPagination();
+    initResetSearchWhenCloseMessageModal();
   };
 
   return {
     init,
   };
 };
-
-window.addEventListener("load", function () {
-  Products().init();
-});

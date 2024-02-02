@@ -45,13 +45,13 @@
 }
 
 .products .card {
-    width: 300px;
-    border: 1px solid black;
+  width: 300px;
+  border: 1px solid black;
 }
 
 .products .form-select {
-    width: 100px !important;
-    margin-bottom: 50px;
+  width: 100px !important;
+  margin-bottom: 50px;
 }
 
 .products .sold-off {
@@ -76,7 +76,7 @@
   width: 320px !important;
 }
 
-#products-items .col .btn  {
+#products-items .col .btn {
   margin-top: 5px;
 }
 
@@ -90,4 +90,8 @@
 
 .disable {
   display: none !important;
+}
+
+.toast-body {
+  background-color: rgba(255, 255, 255, 0.85);
 }
