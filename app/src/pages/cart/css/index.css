@@ -1,5 +1,5 @@
 #cart {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #purchase-infos {
@@ -12,20 +12,20 @@
 }
 
 .person-info {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .payment-info {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .payment-info .boleto {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .payment-info .boleto span {
-    border: 1px solid white;
-    padding: 5px;
+  border: 1px solid white;
+  padding: 5px;
 }
 
 .product-details {
@@ -63,8 +63,8 @@
 }
 
 .cart-icon {
-    cursor: pointer;
-    margin: 0 5px;
+  cursor: pointer;
+  margin: 0 5px;
 }
 
 .information span {
@@ -79,6 +79,18 @@
 .items {
   -webkit-box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.25);
   box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.08);
+}
+
+.items div:first-child {
+  width: 160px;
+}
+
+.items div:first-child span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 143px;
+  margin-top: 5px;
 }
 
 .spec {
