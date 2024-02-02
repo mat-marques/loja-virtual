@@ -1,4 +1,4 @@
-## Passos de intalação
+## Passos de instalação
 
 - Instale o docker na sua máquina
 - Entre na pasta do projeto
