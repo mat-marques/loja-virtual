@@ -10,7 +10,7 @@ $PAGE_SIZE = $_GET["per_page"];
 
 $endpoint = "https://jueri.com.br/sis/api/v1/$ID/produto?page=$PAGE&per_page=$PAGE_SIZE";
 
-if ($SEARCH === "") {
+if (!empty($SEARCH)) {
     $endpoint = "https://jueri.com.br/sis/api/v1/$ID/produto?search=$SEARCH&page=$PAGE&per_page=$PAGE_SIZE";
 }
 
